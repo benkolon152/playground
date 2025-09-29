@@ -3,9 +3,12 @@ export default class EmailInput extends React.Component{
     state = {
         email: ''
     }
-    
+
     setEmail = function(email){
         console.log('setEmail', email)
+
+        this.props.onEmailChange(email)
+
         this.setState({email})
     }
 
