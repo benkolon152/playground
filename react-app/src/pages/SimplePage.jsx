@@ -1,14 +1,10 @@
 /* SimplePage.jsx */
 import React from "react";
+import EmailInput from "../components/emailinputs/Emailinputs";
 export default class SimplePage extends React.Component {
-    state = {
-        email: ''
-    }
 
-    setEmail = function(email){
-        console.log('setEmail', email)
-        this.setState({email})
-    }
+
+
 
     handleFormSubmit = e =>{
         e.prevetDefault()
@@ -26,11 +22,7 @@ export default class SimplePage extends React.Component {
             <div id="content-simple" className="tab-content active">
             <h2>Simple Email Form</h2>
                 <form onSubmit={this.handleFormSubmit}>
-                    <label htmlFor="simpleEmail">Email address:</label>
-                    <input type="email" id="simpleEmail" name="simpleEmail" placeholder="name@example.com" required autoComplete="on" 
-                        onChange={e => this.setEmail(e.target?.value)}
-                        onBlur={this.handleEmailBlur}
-                        />
+                    <EmailInput/>
                     <button type="submit">Submit</button>
                     <input type="reset" value={"Reset"}/>
                 </form>
