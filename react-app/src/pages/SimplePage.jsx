@@ -22,6 +22,11 @@ export default class SimplePage extends React.Component {
         this.setState({email})
     }
 
+    handleReset = e => {
+        console.log('reset', e)
+
+    }
+
     render() {
         return (
             <div id="content-simple" className="tab-content active">
@@ -29,7 +34,7 @@ export default class SimplePage extends React.Component {
                 <form onSubmit={this.handleFormSubmit}>
                     <EmailInput onEmailChange={this.handleEmailChange}/>
                     <button type="submit">Submit</button>
-                    <input type="reset" value={"Reset"}/>
+                    <input type="reset" value={"Reset"} onClick={this.handleReset}/>
                 </form>
             </div>
         )
