@@ -3,25 +3,25 @@ import InputField from "../components/imputfield/ImputFields";
 export default class AdvancedPage extends React.Component{
     state = {
         advText: " ",
+        advEmail: " ",
     }
 
     handleAdvTextValueChange = advText => this.setState({advText})
+    handleAdvEmailValueChange = advEmail => this.setState({advEmail})
 
     render() {
         return (
             <div id="content-advanced" className="tab-content active">
                 <h2>Advanced Form Elements</h2>
                 <form autoComplete="on">
-                    <InputField
-                        type= "text"
-                        name="adv-text"
-                        label="Text:"
-                        placeholder="Text input sample"    
-                        onValueChange={this.handleAdvTextValueChange}
-                    />
                     <div className="form-row">
-                        <label htmlFor="adv-text">Text:</label>
-                        <input type="text" id="adv-text" name="adv-text" placeholder="Text input sample" />
+                        <InputField
+                            type= "text"
+                            name="adv-text"
+                            label="Text:"
+                            placeholder="Text input sample"    
+                            onValueChange={this.handleAdvTextValueChange}
+                        />
                     </div>
                     <div className="form-row">
                         <label>Checkbox:</label>
@@ -63,8 +63,13 @@ export default class AdvancedPage extends React.Component{
                         <input type="datetime-local" id="adv-datetime" name="adv-datetime" />
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-email">Email:</label>
-                        <input type="email" id="adv-email" name="adv-email" placeholder="example@mail.com" />
+                        <InputField
+                            type= "email"
+                            name="adv-email"
+                            label="Email:"
+                            placeholder="example@mail.com"    
+                            onValueChange={this.handleAdvEmailValueChange}
+                        />
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-tel">Telephone:</label>
@@ -108,6 +113,6 @@ export default class AdvancedPage extends React.Component{
 
     componentDidUpdate(prevState, prevProps){
         console.log('state', prevState, this.state)
-        console.log('props', prevProps, this.props)
+        //console.log('props', prevProps, this.props)
     }
 }
