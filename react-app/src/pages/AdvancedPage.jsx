@@ -1,10 +1,13 @@
 import React from "react";
 import InputField from "../components/imputfield/ImputFields";
+import CheckBox from "../components/checkbox/CheckBox";
 export default class AdvancedPage extends React.Component{
     state = {
         advText: " ",
         advEmail: " ",
         advTel: " ",
+
+        "adv-checkbox1": false,
     }
 
     handleAdvTextValueChange = advText => this.setState({advText})
@@ -14,6 +17,12 @@ export default class AdvancedPage extends React.Component{
         if (advTel.length>=1)
             result = advTel
         this.setState({advTel})
+    }
+    handleCheckToggle = toggledCheckBox =>{
+        console.log('handleCheckbox', toggledCheckBox)
+        const newState = {...this.state}
+        newState[toggledCheckBox] = !this.state[toggledCheckBoxw]
+        this.setState(newState)
     }
 
     render() {
@@ -33,7 +42,11 @@ export default class AdvancedPage extends React.Component{
                     <div className="form-row">
                         <label>Checkbox:</label>
                         <div className="checkbox-group">
-                            <input type="checkbox" id="adv-checkbox1" name="adv-checkbox1" /><label htmlFor="adv-checkbox1">Item 1</label>
+                            <CheckBox
+                                name="adv-checkbox1"
+                                label="Item 1"
+                                onCheckToggle={toggledCheckBox=>this.handleCheckToggle(toggledCheckBox)}
+                            />
                             <input type="checkbox" id="adv-checkbox2" name="adv-checkbox2" /><label htmlFor="adv-checkbox2">Item 2</label>
                         </div>
                     </div>
