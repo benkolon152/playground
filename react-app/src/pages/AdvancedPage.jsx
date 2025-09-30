@@ -8,6 +8,7 @@ export default class AdvancedPage extends React.Component{
         advTel: " ",
 
         "adv-checkbox1": false,
+        "adv-checkbox2": false,
     }
 
     handleAdvTextValueChange = advText => this.setState({advText})
@@ -21,7 +22,7 @@ export default class AdvancedPage extends React.Component{
     handleCheckToggle = toggledCheckBox =>{
         console.log('handleCheckbox', toggledCheckBox)
         const newState = {...this.state}
-        newState[toggledCheckBox] = !this.state[toggledCheckBoxw]
+        newState[toggledCheckBox] = !this.state[toggledCheckBox]
         this.setState(newState)
     }
 
@@ -47,7 +48,11 @@ export default class AdvancedPage extends React.Component{
                                 label="Item 1"
                                 onCheckToggle={toggledCheckBox=>this.handleCheckToggle(toggledCheckBox)}
                             />
-                            <input type="checkbox" id="adv-checkbox2" name="adv-checkbox2" /><label htmlFor="adv-checkbox2">Item 2</label>
+                            <CheckBox
+                                name="adv-checkbox2"
+                                label="Item 2"
+                                onCheckToggle={toggledCheckBox=>this.handleCheckToggle(toggledCheckBox)}
+                            />
                         </div>
                     </div>
                     <div className="form-row">
