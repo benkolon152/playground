@@ -1,6 +1,7 @@
 import React from "react";
 import InputField from "../components/imputfield/ImputFields";
 import CheckBox from "../components/checkbox/CheckBox";
+import RadioGroup from "../components/RadioGroup/RadioGroupe";
 export default class AdvancedPage extends React.Component{
     state = {
         advText: " ",
@@ -25,6 +26,13 @@ export default class AdvancedPage extends React.Component{
         newState[toggledCheckBox] = !this.state[toggledCheckBox]
         this.setState(newState)
     }
+    getRadioGroup = () => <div className="radio-group">
+                            <input type="radio" id="adv-radio1" name="adv-radio" value="A" /><label htmlFor="adv-radio1">A</label>
+                            <input type="radio" id="adv-radio2" name="adv-radio" value="B" /><label htmlFor="adv-radio2">B</label>
+                            <input type="radio" id="adv-radio3" name="adv-radio" value="C" /><label htmlFor="adv-radio3">C</label>
+                        </div>
+
+    radioGroupinstance = this.getRadioGroup()
 
     render() {
         return (
@@ -57,11 +65,12 @@ export default class AdvancedPage extends React.Component{
                     </div>
                     <div className="form-row">
                         <label>Radio group:</label>
-                        <div className="radio-group">
-                            <input type="radio" id="adv-radio1" name="adv-radio" value="A" /><label htmlFor="adv-radio1">A</label>
-                            <input type="radio" id="adv-radio2" name="adv-radio" value="B" /><label htmlFor="adv-radio2">B</label>
-                            <input type="radio" id="adv-radio3" name="adv-radio" value="C" /><label htmlFor="adv-radio3">C</label>
-                        </div>
+                        <RadioGroup
+                            name="adv-radio"
+                            ids={['adv-radio1', 'adv-radio2', 'adv-radio3']}
+                            values={['A','B','C']}
+                            labels={['A','B','C']}
+                        />
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-color">Color picker:</label>
