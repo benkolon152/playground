@@ -25,6 +25,13 @@ export default class AdvancedPage extends React.Component{
         newState[toggledCheckBox] = !this.state[toggledCheckBox]
         this.setState(newState)
     }
+    getRadioGroup = () => <div className="radio-group">
+                            <input type="radio" id="adv-radio1" name="adv-radio" value="A" /><label htmlFor="adv-radio1">A</label>
+                            <input type="radio" id="adv-radio2" name="adv-radio" value="B" /><label htmlFor="adv-radio2">B</label>
+                            <input type="radio" id="adv-radio3" name="adv-radio" value="C" /><label htmlFor="adv-radio3">C</label>
+                        </div>
+
+    radioGroupinstance = this.getRadioGroup()
 
     render() {
         return (
@@ -57,11 +64,7 @@ export default class AdvancedPage extends React.Component{
                     </div>
                     <div className="form-row">
                         <label>Radio group:</label>
-                        <div className="radio-group">
-                            <input type="radio" id="adv-radio1" name="adv-radio" value="A" /><label htmlFor="adv-radio1">A</label>
-                            <input type="radio" id="adv-radio2" name="adv-radio" value="B" /><label htmlFor="adv-radio2">B</label>
-                            <input type="radio" id="adv-radio3" name="adv-radio" value="C" /><label htmlFor="adv-radio3">C</label>
-                        </div>
+                        {this.radioGroupinstance}
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-color">Color picker:</label>
