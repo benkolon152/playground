@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react"
 
-export default function CottonPicker() {
+export default function CottonPicker(props) {
     const [state, setState] = useState({
         color:'#263159'
     })
 
-    const handleColorChange = color => setState({color})
+    const handleColorChange = color =>{
+        props.onColorPick(e.target?.value) 
+        setState({color: e.target?.value})
+    }
     const componentDidUpdate = () => {
         console.log('componentDidUpdate color', state.color)
     }

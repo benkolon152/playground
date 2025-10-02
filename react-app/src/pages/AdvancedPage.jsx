@@ -33,6 +33,7 @@ export default class AdvancedPage extends React.Component{
         console.log('handleRadioCheck' , radioId)
         this.setState({radioChecked: radioId})
     }
+    handleColorPick = color => this.setState({color})
     getRadioGroup = () => <div className="radio-group">
                             <input type="radio" id="adv-radio1" name="adv-radio" value="A" /><label htmlFor="adv-radio1">A</label>
                             <input type="radio" id="adv-radio2" name="adv-radio" value="B" /><label htmlFor="adv-radio2">B</label>
@@ -81,7 +82,7 @@ export default class AdvancedPage extends React.Component{
                         />
                     </div>
                     <div className="form-row">
-                        <CottonPicker/>
+                        <CottonPicker onColorPick={this.handleColorPick}/>
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-month">Month:</label>
