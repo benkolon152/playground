@@ -2,6 +2,7 @@ import React from "react";
 import InputField from "../components/imputfield/ImputFields";
 import CheckBox from "../components/checkbox/CheckBox";
 import RadioGroup from "../components/RadioGroup/RadioGroupe";
+import CottonPicker from "../components/colorpicker/CotonPicker";
 export default class AdvancedPage extends React.Component{
     state = {
         advText: " ",
@@ -80,8 +81,7 @@ export default class AdvancedPage extends React.Component{
                         />
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-color">Color picker:</label>
-                        <input type="color" id="adv-color" name="adv-color" value="#263159" onChange={()=>{}} />
+                        <CottonPicker/>
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-month">Month:</label>
