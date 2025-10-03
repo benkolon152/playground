@@ -5,6 +5,7 @@ import RadioGroup from "../components/RadioGroup/RadioGroupe";
 import CottonPicker from "../components/colorpicker/CotonPicker";
 import MonthPicker from "../components/MonthPicker/MonthPicker";
 import WeekPicker from "../components/WeekPicker/WeekPicker";
+import DatePicker from "../components/datePicker/DatePicker";
 export default class AdvancedPage extends React.Component{
     state = {
         advText: " ",
@@ -41,6 +42,9 @@ export default class AdvancedPage extends React.Component{
     }
     handleWeekChange = week =>{
         this.setState({week})
+    }
+    handleDateChange = date => {
+        this.setState({date})
     }
 
 
@@ -102,8 +106,7 @@ export default class AdvancedPage extends React.Component{
                         <WeekPicker onWeekChange={this.handleWeekChange}/>
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-date">Date:</label>
-                        <input type="date" id="adv-date" name="adv-date" />
+                        <DatePicker onDateChange={this.handleDateChange}/>
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-time">Time:</label>
