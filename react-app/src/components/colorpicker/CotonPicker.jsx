@@ -5,7 +5,7 @@ export default function CottonPicker(props) {
         color:'#263159'
     })
 
-    const handleColorChange = color =>{
+    const handleColorChange = e =>{
         props.onColorPick(e.target?.value) 
         setState({color: e.target?.value})
     }

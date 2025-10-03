@@ -3,6 +3,7 @@ import InputField from "../components/imputfield/ImputFields";
 import CheckBox from "../components/checkbox/CheckBox";
 import RadioGroup from "../components/RadioGroup/RadioGroupe";
 import CottonPicker from "../components/colorpicker/CotonPicker";
+import MonthPicker from "../components/MonthPicker/MonthPicker";
 export default class AdvancedPage extends React.Component{
     state = {
         advText: " ",
@@ -34,6 +35,12 @@ export default class AdvancedPage extends React.Component{
         this.setState({radioChecked: radioId})
     }
     handleColorPick = color => this.setState({color})
+    handleMonthChange = month =>{ 
+        this.setState({month})
+    }
+
+
+
     getRadioGroup = () => <div className="radio-group">
                             <input type="radio" id="adv-radio1" name="adv-radio" value="A" /><label htmlFor="adv-radio1">A</label>
                             <input type="radio" id="adv-radio2" name="adv-radio" value="B" /><label htmlFor="adv-radio2">B</label>
@@ -85,8 +92,7 @@ export default class AdvancedPage extends React.Component{
                         <CottonPicker onColorPick={this.handleColorPick}/>
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-month">Month:</label>
-                        <input type="month" id="adv-month" name="adv-month" />
+                        <MonthPicker onMonthChange={this.handleMonthChange} />
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-week">Week:</label>
