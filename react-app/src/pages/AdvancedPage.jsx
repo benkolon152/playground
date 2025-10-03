@@ -4,6 +4,7 @@ import CheckBox from "../components/checkbox/CheckBox";
 import RadioGroup from "../components/RadioGroup/RadioGroupe";
 import CottonPicker from "../components/colorpicker/CotonPicker";
 import MonthPicker from "../components/MonthPicker/MonthPicker";
+import WeekPicker from "../components/WeekPicker/WeekPicker";
 export default class AdvancedPage extends React.Component{
     state = {
         advText: " ",
@@ -37,6 +38,9 @@ export default class AdvancedPage extends React.Component{
     handleColorPick = color => this.setState({color})
     handleMonthChange = month =>{ 
         this.setState({month})
+    }
+    handleWeekChange = week =>{
+        this.setState({week})
     }
 
 
@@ -95,8 +99,7 @@ export default class AdvancedPage extends React.Component{
                         <MonthPicker onMonthChange={this.handleMonthChange} />
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-week">Week:</label>
-                        <input type="week" id="adv-week" name="adv-week" />
+                        <WeekPicker onWeekChange={this.handleWeekChange}/>
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-date">Date:</label>
