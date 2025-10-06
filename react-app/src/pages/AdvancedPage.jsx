@@ -6,6 +6,8 @@ import CottonPicker from "../components/colorpicker/CotonPicker";
 import MonthPicker from "../components/MonthPicker/MonthPicker";
 import WeekPicker from "../components/WeekPicker/WeekPicker";
 import DatePicker from "../components/datePicker/DatePicker";
+import TimePicker from "../components/timePicker/TimePicker";
+import DateTimePicker from "../components/dateTime/DateTimePicker";
 export default class AdvancedPage extends React.Component{
     state = {
         advText: " ",
@@ -45,6 +47,12 @@ export default class AdvancedPage extends React.Component{
     }
     handleDateChange = date => {
         this.setState({date})
+    }
+    handleTimeChange = time => {
+        this.setState({time})
+    }
+    handleDateTimeChange = date => {
+        this.setState({datetime: date})
     }
 
 
@@ -109,12 +117,10 @@ export default class AdvancedPage extends React.Component{
                         <DatePicker onDateChange={this.handleDateChange}/>
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-time">Time:</label>
-                        <input type="time" id="adv-time" name="adv-time" />
+                        <TimePicker onTimeChange={this.handleTimeChange}/>
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-datetime">Local Datetime:</label>
-                        <input type="datetime-local" id="adv-datetime" name="adv-datetime" />
+                        <DateTimePicker onDateTimeChange={this.handleDateTimeChange}/>
                     </div>
                     <div className="form-row">
                         <InputField
