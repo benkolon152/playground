@@ -56,7 +56,7 @@ export default class AdvancedPage extends React.Component{
     handleDateTimeChange = date => {
         this.setState({datetime: date})
     }
-
+    handleNumberChange = number => this.setState({number})
 
 
     getRadioGroup = () => <div className="radio-group">
@@ -148,7 +148,7 @@ export default class AdvancedPage extends React.Component{
                         <span style={{color: "#999"}}>(hidden in UI)</span>
                     </div>
                     <div className="form-row">
-                        <NumInput />
+                        <NumInput onValueChange={this.handleNumberChange} />
                     </div>
                     <div className="form-row range-bar">
                         <label htmlFor="adv-range">Range:</label>
