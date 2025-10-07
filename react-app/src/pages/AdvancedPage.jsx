@@ -11,6 +11,7 @@ import DateTimePicker from "../components/dateTime/DateTimePicker";
 import NumInput from "../components/numInput/NumberInput";
 import DropDown from "../components/dropdown/DropDown";
 import RangeSlider from "../components/range/RangeSlider";
+import TeaxtArea from "../components/rextarea/TextArea";
 export default class AdvancedPage extends React.Component{
     state = {
         advText: " ",
@@ -61,6 +62,7 @@ export default class AdvancedPage extends React.Component{
     handleNumberChange = number => this.setState({number})
     handleSelectDropDown = choice => this.setState({choice})
     handleSlide = slideNum => this.setState({slideNum})
+    handleMultiChange = multi => this.setState({multi})
 
 
     getRadioGroup = () => <div className="radio-group">
@@ -161,8 +163,7 @@ export default class AdvancedPage extends React.Component{
                         <DropDown onSelect={this.handleSelectDropDown}/>
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-textarea">Textarea:</label>
-                        <textarea id="adv-textarea" name="adv-textarea" placeholder="Comments..."></textarea>
+                        <TeaxtArea onChange={this.handleMultiChange}/>
                     </div>
                     <div className="button-row">
                         <button type="submit">Submit</button>
