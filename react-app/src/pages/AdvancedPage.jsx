@@ -10,6 +10,7 @@ import TimePicker from "../components/timePicker/TimePicker";
 import DateTimePicker from "../components/dateTime/DateTimePicker";
 import NumInput from "../components/numInput/NumberInput";
 import DropDown from "../components/dropdown/DropDown";
+import RangeSlider from "../components/range/RangeSlider";
 export default class AdvancedPage extends React.Component{
     state = {
         advText: " ",
@@ -153,9 +154,7 @@ export default class AdvancedPage extends React.Component{
                         <NumInput onValueChange={this.handleNumberChange} />
                     </div>
                     <div className="form-row range-bar">
-                        <label htmlFor="adv-range">Range:</label>
-                        <input type="range" id="adv-range" name="adv-range" min="0" max="100" step="1" value="50" onInput={()=>{}} />
-                        <span id="rangeValue" style={{minWidth:'32px'}}>50</span>
+                        <RangeSlider/>
                     </div>
                     <div className="form-row">
                         <DropDown onSelect={this.handleSelectDropDown}/>
