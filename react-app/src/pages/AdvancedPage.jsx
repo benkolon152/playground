@@ -60,6 +60,7 @@ export default class AdvancedPage extends React.Component{
     }
     handleNumberChange = number => this.setState({number})
     handleSelectDropDown = choice => this.setState({choice})
+    handleSlide = slideNum => this.setState({slideNum})
 
 
     getRadioGroup = () => <div className="radio-group">
@@ -154,7 +155,7 @@ export default class AdvancedPage extends React.Component{
                         <NumInput onValueChange={this.handleNumberChange} />
                     </div>
                     <div className="form-row range-bar">
-                        <RangeSlider/>
+                        <RangeSlider onSlide={this.handleSlide}/>
                     </div>
                     <div className="form-row">
                         <DropDown onSelect={this.handleSelectDropDown}/>
