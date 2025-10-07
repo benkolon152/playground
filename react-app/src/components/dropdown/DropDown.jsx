@@ -8,8 +8,11 @@ export default class DropDown extends Component{
 
     handleChose = e => {
         const {value} = e.target
+        const {onSelect} = this.props
         console.log("dropdown", e)
         console.log("value", value)
+
+        onSelect(value)
         this.setState({dropdownChosen: e})
     }
 
