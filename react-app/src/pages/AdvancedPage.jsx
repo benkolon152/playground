@@ -1,6 +1,17 @@
 import React from "react";
 import InputField from "../components/imputfield/ImputFields";
 import CheckBox from "../components/checkbox/CheckBox";
+import RadioGroup from "../components/RadioGroup/RadioGroupe";
+import CottonPicker from "../components/colorpicker/CotonPicker";
+import MonthPicker from "../components/MonthPicker/MonthPicker";
+import WeekPicker from "../components/WeekPicker/WeekPicker";
+import DatePicker from "../components/datePicker/DatePicker";
+import TimePicker from "../components/timePicker/TimePicker";
+import DateTimePicker from "../components/dateTime/DateTimePicker";
+import NumInput from "../components/numInput/NumberInput";
+import DropDown from "../components/dropdown/DropDown";
+import RangeSlider from "../components/range/RangeSlider";
+import TeaxtArea from "../components/rextarea/TextArea";
 export default class AdvancedPage extends React.Component{
     state = {
         advText: " ",
@@ -9,6 +20,9 @@ export default class AdvancedPage extends React.Component{
 
         "adv-checkbox1": false,
         "adv-checkbox2": false,
+
+        radioChecked: '',
+        "adv-hidden": "sample_hidden",
     }
 
     handleAdvTextValueChange = advText => this.setState({advText})
@@ -25,6 +39,39 @@ export default class AdvancedPage extends React.Component{
         newState[toggledCheckBox] = !this.state[toggledCheckBox]
         this.setState(newState)
     }
+    handleRadioCheck = radioId => {
+        console.log('handleRadioCheck' , radioId)
+        this.setState({radioChecked: radioId})
+    }
+    handleColorPick = color => this.setState({color})
+    handleMonthChange = month =>{ 
+        this.setState({month})
+    }
+    handleWeekChange = week =>{
+        this.setState({week})
+    }
+    handleDateChange = date => {
+        this.setState({date})
+    }
+    handleTimeChange = time => {
+        this.setState({time})
+    }
+    handleDateTimeChange = date => {
+        this.setState({datetime: date})
+    }
+    handleNumberChange = number => this.setState({number})
+    handleSelectDropDown = choice => this.setState({choice})
+    handleSlide = slideNum => this.setState({slideNum})
+    handleMultiChange = multi => this.setState({multi})
+
+
+    getRadioGroup = () => <div className="radio-group">
+                            <input type="radio" id="adv-radio1" name="adv-radio" value="A" /><label htmlFor="adv-radio1">A</label>
+                            <input type="radio" id="adv-radio2" name="adv-radio" value="B" /><label htmlFor="adv-radio2">B</label>
+                            <input type="radio" id="adv-radio3" name="adv-radio" value="C" /><label htmlFor="adv-radio3">C</label>
+                        </div>
+
+    radioGroupinstance = this.getRadioGroup()
 
     render() {
         return (
@@ -57,35 +104,31 @@ export default class AdvancedPage extends React.Component{
                     </div>
                     <div className="form-row">
                         <label>Radio group:</label>
-                        <div className="radio-group">
-                            <input type="radio" id="adv-radio1" name="adv-radio" value="A" /><label htmlFor="adv-radio1">A</label>
-                            <input type="radio" id="adv-radio2" name="adv-radio" value="B" /><label htmlFor="adv-radio2">B</label>
-                            <input type="radio" id="adv-radio3" name="adv-radio" value="C" /><label htmlFor="adv-radio3">C</label>
-                        </div>
+                        <RadioGroup
+                            name="adv-radio"
+                            ids={['adv-radio1', 'adv-radio2', 'adv-radio3']}
+                            values={['A','B','C']}
+                            labels={['A','B','C']}
+                            onRadioChecked={this.handleRadioCheck}
+                        />
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-color">Color picker:</label>
-                        <input type="color" id="adv-color" name="adv-color" value="#263159" onChange={()=>{}} />
+                        <CottonPicker onColorPick={this.handleColorPick}/>
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-month">Month:</label>
-                        <input type="month" id="adv-month" name="adv-month" />
+                        <MonthPicker onMonthChange={this.handleMonthChange} />
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-week">Week:</label>
-                        <input type="week" id="adv-week" name="adv-week" />
+                        <WeekPicker onWeekChange={this.handleWeekChange}/>
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-date">Date:</label>
-                        <input type="date" id="adv-date" name="adv-date" />
+                        <DatePicker onDateChange={this.handleDateChange}/>
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-time">Time:</label>
-                        <input type="time" id="adv-time" name="adv-time" />
+                        <TimePicker onTimeChange={this.handleTimeChange}/>
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-datetime">Local Datetime:</label>
-                        <input type="datetime-local" id="adv-datetime" name="adv-datetime" />
+                        <DateTimePicker onDateTimeChange={this.handleDateTimeChange}/>
                     </div>
                     <div className="form-row">
                         <InputField
@@ -107,30 +150,20 @@ export default class AdvancedPage extends React.Component{
                     </div>
                     <div className="form-row">
                         <label htmlFor="adv-hidden">Hidden value:</label>
-                        <input type="hidden" id="adv-hidden" name="adv-hidden" value="sample_hidden" />
+                        <input type="hidden" id="adv-hidden" name="adv-hidden" value={this.state["adv-hidden"]} />
                         <span style={{color: "#999"}}>(hidden in UI)</span>
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-number">Number:</label>
-                        <input type="number" id="adv-number" name="adv-number" min="0" max="100" step="1" value="42" onChange={()=>{}} />
+                        <NumInput onValueChange={this.handleNumberChange} />
                     </div>
                     <div className="form-row range-bar">
-                        <label htmlFor="adv-range">Range:</label>
-                        <input type="range" id="adv-range" name="adv-range" min="0" max="100" step="1" value="50" onInput={()=>{}} />
-                        <span id="rangeValue" style={{minWidth:'32px'}}>50</span>
+                        <RangeSlider onSlide={this.handleSlide}/>
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-select">Select:</label>
-                        <select id="adv-select" name="adv-select">
-                            <option>--- Choose ---</option>
-                            <option value="foo">Foo</option>
-                            <option value="bar">Bar</option>
-                            <option value="baz">Baz</option>
-                        </select>
+                        <DropDown onSelect={this.handleSelectDropDown}/>
                     </div>
                     <div className="form-row">
-                        <label htmlFor="adv-textarea">Textarea:</label>
-                        <textarea id="adv-textarea" name="adv-textarea" placeholder="Comments..."></textarea>
+                        <TeaxtArea onChange={this.handleMultiChange}/>
                     </div>
                     <div className="button-row">
                         <button type="submit">Submit</button>
